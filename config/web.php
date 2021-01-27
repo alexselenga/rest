@@ -17,6 +17,9 @@ $config = [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'ztrx_YP7zl8V_SAgTvXu9b7SznXZvlcP',
+            'parsers' => [
+                'application/json' => 'yii\web\JsonParser',
+            ]
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
@@ -35,7 +38,7 @@ $config = [
                 'class' => 'Swift_SmtpTransport',
                 'host' => 'smtp.yandex.ru', //!
                 'username' => 'alexselenga@yandex.ru', //!
-                'password' => '123', //!
+                'password' => '***', //!
                 'port' => '465', //!
                 'encryption' => 'ssl', //!
             ],
@@ -52,9 +55,16 @@ $config = [
         'db' => $db,
         'urlManager' => [
             'enablePrettyUrl' => true,
+            'enableStrictParsing' => false,
             'showScriptName' => false,
             'rules' => [
+                ['class' => 'yii\rest\UrlRule', 'controller' => 'number'],
             ],
+        ],
+    ],
+    'modules' => [
+        'api' => [
+            'class' => 'app\modules\api\Module',
         ],
     ],
     'params' => $params,
