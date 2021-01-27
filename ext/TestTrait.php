@@ -6,7 +6,7 @@ namespace app\ext;
 trait TestTrait
 {
     public function getNumberIndex($number, $numbers) {
-        $leftIndex = -1;
+        $lastIndex = $leftIndex = -1;
         $rightIndex = count($numbers);
         $leftCount = $rightCount = 0;
 
@@ -24,8 +24,12 @@ trait TestTrait
                     $rightCount++;
                 }
             }
+
+            if ($leftCount && $rightCount && $leftCount == $rightCount) {
+                $lastIndex = $leftIndex + 1;
+            }
         }
 
-        return $leftCount && $rightCount && $leftCount == $rightCount ? $leftIndex + 1 : -1;
+        return $lastIndex;
     }
 }
