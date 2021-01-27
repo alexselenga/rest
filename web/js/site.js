@@ -26,7 +26,7 @@ async function getNumbers() {
     if (response.ok) {
         const numberIndex = await response.json();
 
-        const numbersStr = numbers.map((value, index) => index === numberIndex ? value = ' ||| ' + value : value)
+        const numbersStr = numbers.map((value, index) => index === numberIndex ? ' ||| ' + value : value)
             .join(', ');
 
         $('#number').text('Число: ' + number);
