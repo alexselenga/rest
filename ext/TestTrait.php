@@ -6,30 +6,26 @@ namespace app\ext;
 trait TestTrait
 {
     public function getNumberIndex($number, $numbers) {
-        $leftIndex = 0;
-        $rightIndex = count($numbers) - 1;
+        $leftIndex = -1;
+        $rightIndex = count($numbers);
         $leftCount = $rightCount = 0;
 
-        while ($leftIndex != $rightIndex) {
+        while ($rightIndex - $leftIndex > 1) {
             if ($leftCount <= $rightCount) {
+                $leftIndex++;
+
                 if ($numbers[$leftIndex] == $number) {
                     $leftCount++;
                 }
-
-                $leftIndex++;
             } else {
+                $rightIndex--;
+
                 if ($numbers[$rightIndex] != $number) {
                     $rightCount++;
                 }
-
-                $rightIndex--;
             }
         }
 
-        if (!$leftCount || !$rightCount) {
-            return -1;
-        }
-
-        return $leftIndex;
+        return $leftCount && $rightCount && $leftCount == $rightCount ? $leftIndex + 1 : -1;
     }
 }

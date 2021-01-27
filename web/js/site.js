@@ -1,5 +1,3 @@
-"use strict";
-
 const NUMBER_RANGE = 5;
 const NUMBER_COUNT = 15;
 
@@ -18,7 +16,7 @@ async function getNumbers() {
     };
 
     const response = await fetch('api/number/get-number-index', {
-        method: 'PUT',
+        method: 'POST',
         headers: {
             'Content-Type': 'application/json;charset=utf-8'
         },

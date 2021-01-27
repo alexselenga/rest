@@ -38,7 +38,7 @@ $config = [
                 'class' => 'Swift_SmtpTransport',
                 'host' => 'smtp.yandex.ru', //!
                 'username' => 'alexselenga@yandex.ru', //!
-                'password' => 'develOxy', //!
+                'password' => 'selenga!#%_76', //!
                 'port' => '465', //!
                 'encryption' => 'ssl', //!
             ],
