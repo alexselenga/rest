@@ -6,9 +6,10 @@ namespace app\models;
  * This is the model class for table "number".
  *
  * @property int $id
- * @property int $user_id
- * @property int|null $number
- * @property string|null $numbers
+ * @property int|null $user_id
+ * @property int $number
+ * @property string $numbers
+ * @property int $number_index
  *
  * @property User $user
  */
@@ -28,8 +29,8 @@ class Number extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user_id'], 'required'],
-            [['user_id', 'number'], 'integer'],
+            [['number', 'numbers', 'number_index'], 'required'],
+            [['user_id', 'number', 'number_index'], 'integer'],
             [['numbers'], 'string'],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['user_id' => 'id']],
         ];
@@ -45,6 +46,7 @@ class Number extends \yii\db\ActiveRecord
             'user_id' => 'User ID',
             'number' => 'Число',
             'numbers' => 'Числа',
+            'number_index' => 'Индекс числа',
         ];
     }
 

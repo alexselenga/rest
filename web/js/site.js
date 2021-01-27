@@ -17,7 +17,7 @@ async function getNumbers() {
         number,
     };
 
-    const response = await fetch('/api/number/get-number-index', {
+    const response = await fetch('api/number/get-number-index', {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json;charset=utf-8'
@@ -25,14 +25,20 @@ async function getNumbers() {
         body: JSON.stringify(data)
     });
 
-    const numberIndex = await response.json();
+    if (response.ok) {
+        const numberIndex = await response.json();
 
-    const numbersStr = numbers.map((value, index) => index === numberIndex ? value = value + '|| ' : value)
-        .join(', ');
+        const numbersStr = numbers.map((value, index) => index === numberIndex ? value = ' ||| ' + value : value)
+            .join(', ');
 
-    $('#number').text('Число: ' + number);
-    $('#numbers').text(numbersStr);
-    $('#message').text(numberIndex === -1 ? 'Позиция не определена' : '');
+        $('#number').text('Число: ' + number);
+        $('#numbers').text(numbersStr);
+        $('#message').text(numberIndex === -1 ? 'Позиция не определена' : '');
+    } else {
+        $('#number').text('');
+        $('#numbers').text('');
+        $('#message').text(response.statusText);
+    }
 }
 
 $(function() {

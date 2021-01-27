@@ -14,9 +14,10 @@ class m210125_141610_create_number_table extends Migration
     {
         $this->createTable('{{%number}}', [
             'id' => $this->primaryKey(),
-            'user_id' => $this->integer()->notNull(),
-            'number' => $this->integer(),
-            'numbers' => $this->text(),
+            'user_id' => $this->integer(),
+            'number' => $this->integer()->notNull(),
+            'numbers' => $this->text()->notNull(),
+            'number_index' => $this->integer()->notNull(),
         ]);
 
         $this->createIndex(

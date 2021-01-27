@@ -12,15 +12,23 @@ trait TestTrait
 
         while ($leftIndex != $rightIndex) {
             if ($leftCount <= $rightCount) {
-                if ($numbers[$leftIndex] == $number) $leftCount++;
+                if ($numbers[$leftIndex] == $number) {
+                    $leftCount++;
+                }
+
                 $leftIndex++;
             } else {
-                if ($numbers[$rightIndex] != $number) $rightCount++;
+                if ($numbers[$rightIndex] != $number) {
+                    $rightCount++;
+                }
+
                 $rightIndex--;
             }
         }
 
-        if (!$leftCount || !$rightCount) return -1;
+        if (!$leftCount || !$rightCount) {
+            return -1;
+        }
 
         return $leftIndex;
     }
