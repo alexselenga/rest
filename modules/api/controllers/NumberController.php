@@ -46,7 +46,7 @@ class NumberController extends Controller
         $model = new Number;
         $model->user_id = Yii::$app->user->identity->id;
         $model->number = $number;
-        $model->numbers = implode(',', $numbers);
+        $model->numbers = implode(' ', $numbers);
         $model->number_index = $numberIndex;
         $model->save();
 
